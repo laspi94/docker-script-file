@@ -17,12 +17,11 @@ Este script permite gestionar contenedores de Docker de manera mas sencilla para
 > 
 > └── containers
 > 
->    ├── postgres.sh
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── postgres.sh
 > 
->    └── pgadmin.sh
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── pgadmin.sh
 
-
-### Comandos de uso
+### Uso
 
 > Iniciar los contenedores
 ```bash
@@ -54,10 +53,10 @@ Este script permite gestionar contenedores de Docker de manera mas sencilla para
 ./docker-ctl.sh exec {contenedor}
 ```
 
-###### Define el nombre del proyecto en `docker-config.sh`
+### Define el nombre del proyecto en `docker-config.sh`
 PROJECT_NAME="example-project"
 
-###### Ejemplo de un contenedor para postgres -> `postgres.sh`
+### Ejemplo de un contenedor para postgres -> `postgres.sh`
 
 ```bash
 
@@ -89,8 +88,9 @@ postgres_info(){
 export CONTAINER="$POSTGRES_CONTAINER"
 
 ```
-
-> **Observación:** En caso de asignar un directorio reflejo en el volumen de tu contenedor asegurate de comentar la función `ensure_volume` o eliminarla:
+## Observaciones
+>  En caso de asignar un directorio reflejo en el volumen de tu contenedor asegurate de comentar la función `ensure_volume` o eliminarla:
+> `ensure_volume` se encarga de verificar la existencia del volumen y crearlo en caso de que no exista
 
 ```bash
    # ensure_volume "$POSTGRES_VOLUME"
@@ -98,8 +98,18 @@ export CONTAINER="$POSTGRES_CONTAINER"
 
 > Recuerda definir el nombre de tu contenedor como único para evitar conflictos en el lanzamiento del mismo
 
-#### Recuerda que si estás montando multiples servicios de un mismo script en un mismo OS debes añadir un nombre unico para cada script en el nombre de tu contenedor ejemplo: postgres-{nombre-proyecto}
-
 ```bash
 POSTGRES_CONTAINER=postgres-{nombre-proyecto}
 ```
+
+## Autor
+
+Este script fue desarrollado por:
+
+- **Nombre del Autor**: [Alan Laspina](https://github.com/laspi94)
+- **Correo**: [alanjoselaspina@gmail.com](mailto:alanjoselaspina@gmail.com)
+- **GitHub**: [laspi94](https://github.com/laspi94)
+
+## License
+
+![Licencia MIT](https://img.shields.io/badge/License-MIT-blue.svg)
