@@ -35,14 +35,9 @@ start_containers() {
     echo "⏳ Conectando contenedores a la red..."
 
     # Cambiar el delimitador a la coma
-    IFS=','
-
-    for container in $CONTAINERS; do
-        connect_container_to_network "$NET_CONTAINER" "$container"
-    done
-
-    # Restablecer IFS a su valor original
-    unset IFS
+    # for container in "${CONTAINERS[@]}"; do
+    #     connect_container_to_network "$NET_CONTAINER" "$container"
+    # done
 }
 
 # script source

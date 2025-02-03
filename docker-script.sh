@@ -172,7 +172,7 @@ connect_container_to_network() {
     container_name=$2 # Nombre del contenedor
 
     echo "⏳ Conectando contenedor $container_name a la red -> $network_name"
-    docker network connect $network_name $container_name 2>/dev/null && echo -e "⚡ $container_name conectado" || exit_with_message "❌ $container_name no se pudo conectar a la red"
+    docker network -d host connect  $network_name $container_name 2>/dev/null && echo -e "⚡ $container_name conectado" || exit_with_message "❌ $container_name no se pudo conectar a la red"
 }
 
 # Función para ver log de un contenedor
