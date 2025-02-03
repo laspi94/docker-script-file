@@ -53,8 +53,20 @@ Este script permite gestionar contenedores de Docker de manera mas sencilla para
 ./docker-ctl.sh exec {contenedor}
 ```
 
+### Crea el archivo de configuración llamado `docker-config.sh` con la siguiente estructura:
+
+```bash
+#define el nombre de tu proyecto
+PROJECT_NAME="some-app"
+
+export PROJECT_NAME
+```
+
 ### Define el nombre del proyecto en `docker-config.sh`
-PROJECT_NAME="example-project"
+
+```bash
+PROJECT_NAME="some-project"
+```
 
 ### Ejemplo de un contenedor para postgres -> `postgres.sh`
 
@@ -65,7 +77,7 @@ POSTGRES_IMAGE="postgres:16.6-alpine3.21"
 POSTGRES_PORT=5433
 POSTGRES_VOLUME="postgres-data"
 POSTGRES_VOLUME_PATH="/var/lib/postgresql/data"
-POSTGRES_PASSWORD="casealfa"
+POSTGRES_PASSWORD="123456"
 
 #postgres
 postgres_init(){
@@ -88,6 +100,12 @@ postgres_info(){
 export CONTAINER="$POSTGRES_CONTAINER"
 
 ```
+> Para la función de lanzamiento del contenedor la función debe finalizar con `_init`
+
+> También es requerido que la función finzalice con `_info` en caso de querer visualizar nu mensaje de información cada vez que inicia el contenedor
+
+> Exportar el nombre del contenedor de la siguiente manera `export CONTAINER="$POSTGRES_CONTAINER"` para que el script identifique tus conenedores cargados
+
 ## Observaciones
 >  En caso de asignar un directorio reflejo en el volumen de tu contenedor asegurate de comentar la función `ensure_volume` o eliminarla:
 > `ensure_volume` se encarga de verificar la existencia del volumen y crearlo en caso de que no exista
