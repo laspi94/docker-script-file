@@ -1,5 +1,1 @@
-# containers
-/containers/*
-
-# config file
-docker-config.sh
+/containers/

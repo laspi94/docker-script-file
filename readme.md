@@ -21,6 +21,10 @@ Este script permite gestionar contenedores de Docker de manera mas sencilla para
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── pgadmin.sh
 
+### Variables globales diponibles
+
+> 
+
 ### Uso
 
 > Iniciar los contenedores
@@ -106,6 +110,18 @@ export CONTAINER="$POSTGRES_CONTAINER"
 
 > Exportar el nombre del contenedor de la siguiente manera `export CONTAINER="$POSTGRES_CONTAINER"` para que el script identifique tus conenedores cargados
 
+## Test
+Copia todo el contenido de la carpeta `containers-example` a `containers` y luego ejecuta:
+
+```bash
+./docker-ctl.sh start
+```
+
+```bash
+./docker-ctl.sh start
+```
+
+
 ## Observaciones
 >  En caso de asignar un directorio reflejo en el volumen de tu contenedor asegurate de comentar la función `ensure_volume` o eliminarla:
 > `ensure_volume` se encarga de verificar la existencia del volumen y crearlo en caso de que no exista
@@ -130,4 +146,4 @@ Este script fue desarrollado por:
 
 ## License
 
-![Licencia MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![Licencia MIT](https://img.shields.io/badge/License-MIT-green.svg)

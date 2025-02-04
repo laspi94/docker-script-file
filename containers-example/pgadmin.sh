@@ -17,11 +17,13 @@ pgAdmin_init() {
     
     printf "📝 " && MSYS_NO_PATHCONV=1 docker run -d \
         --name $PGADMIN_CONTAINER \
+        --network $NET_CONTAINER \
         --env PGADMIN_DEFAULT_EMAIL="$PGADMIN_DEFAULT_EMAIL" \
         --env PGADMIN_DEFAULT_PASSWORD="$PGADMIN_DEFAULT_PASSWORD" \
         -p $PGADMIN_PORT:80 \
         --volume "$PGADMIN_VOLUME":"$PGADMIN_VOLUME_PATH" \
         $PGADMIN_IMAGE
+    
     echo -e "\n"
 }
 
