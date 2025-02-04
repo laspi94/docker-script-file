@@ -66,16 +66,24 @@ PROJECT_NAME="some-app"
 export PROJECT_NAME
 ```
 
-### Define el nombre del proyecto en `docker-config.sh`
+### Define el nombre del proyecto y el nombre de la red en en `docker-config.sh`
 
 ```bash
-PROJECT_NAME="some-project"
+#define el nombre de tu proyecto
+PROJECT_NAME="project-name"
+
+#define el nombre de la red de contenedores
+NETWORKING_NAME="network-name"
+
+
+# no modificar
+export PROJECT_NAME
+export NETWORKING_NAME
 ```
 
 ### Ejemplo de un contenedor para postgres -> `postgres.sh`
 
 ```bash
-
 POSTGRES_CONTAINER="postgres"
 POSTGRES_IMAGE="postgres:16.6-alpine3.21"
 POSTGRES_PORT=5433
