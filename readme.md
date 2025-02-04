@@ -13,8 +13,6 @@ Este script permite gestionar contenedores de Docker de manera mas sencilla para
 > 
 > ├── docker-ctl.sh
 > 
-> ├── docker-script.sh
-> 
 > └── containers
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── postgres.sh
@@ -107,18 +105,6 @@ export CONTAINER="$POSTGRES_CONTAINER"
 > También es requerido que la función finzalice con `_info` en caso de querer visualizar nu mensaje de información cada vez que inicia el contenedor
 
 > Exportar el nombre del contenedor de la siguiente manera `export CONTAINER="$POSTGRES_CONTAINER"` para que el script identifique tus conenedores cargados
-
-## Test
-Copia todo el contenido de la carpeta `containers-example` a `containers` y luego ejecuta:
-
-```bash
-./docker-ctl.sh start
-```
-
-```bash
-./docker-ctl.sh start
-```
-
 
 ## Observaciones
 >  En caso de asignar un directorio reflejo en el volumen de tu contenedor asegurate de comentar la función `ensure_volume` o eliminarla:

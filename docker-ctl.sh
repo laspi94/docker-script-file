@@ -1,6 +1,11 @@
 #!/bin/bash
 
-source ./docker-config.sh
+if ! [ -f "docker-config.sh" ]; then
+    echo -e "❌ El acrhivo de configuración 'docker-config.sh' no existe."
+    exit 1
+else
+    source ./docker-config.sh
+fi
 
 ###################################################################################
 ## Configuraciones del SCRIPT (No modificar nada, al menos que sepa lo que hace) ##
@@ -8,6 +13,8 @@ source ./docker-config.sh
 
 # Función para iniciar los contenedores
 start_containers() {
+    verifiy_name_project
+
     containers_if_running
 
     #red de servicios (el script se encarga de iniciar una red con el nombre del proyecto)
@@ -79,8 +86,19 @@ load_containers() {
     fi
 }
 
-#red de contenedores
+#verifica el nombre del proyecto
+verifiy_name_project() {
+    if [ -z "$PROJECT_NAME" ]; then
+        exit_with_message "❌ Error: No se definió el nombre del proyecto."
+    fi
+}
+
+#crea la red de contenedores
 create_network() {
+    if [ -z "$NET_CONTAINERS" ]; then
+        exit_with_message "❌ Error: No se definió el nombre de la RED."
+    fi
+
     echo "🚀 Iniciando red de contenedores..."
     printf "📝 " && docker network create $NET_CONTAINERS 2>/dev/null && echo -e "⚠️ Red de contenedores no existe. Creando 🌐 $NET_CONTAINERS" || echo -e "✅ La red ya existe, creación cancelada. "
     echo -e "🌐 $NET_CONTAINERS \n"
