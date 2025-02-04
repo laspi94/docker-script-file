@@ -11,7 +11,7 @@ start_containers() {
     containers_if_running
 
     #red de servicios (el script se encarga de iniciar una red con el nombre del proyecto)
-    network
+    create_network
 
     # Ejecutar dinámicamente todas las funciones que terminan en _init
     for func in $(declare -F | awk '{print $3}'); do
@@ -32,8 +32,8 @@ start_containers() {
     network_message
 }
 
-# Variables para la red
-NET_CONTAINER="${PROJECT_NAME}"
+# Variables global de la red
+NET_CONTAINERS="${NETWORKING_NAME}"
 
 CONTAINERS=() # Inicializa una lista vacía de contenedores
 
@@ -80,15 +80,15 @@ load_containers() {
 }
 
 #red de contenedores
-network() {
+create_network() {
     echo "🚀 Iniciando red de contenedores..."
-    printf "📝 " && docker network create $NET_CONTAINER 2>/dev/null && echo -e "⚠️ Red de contenedores no existe. Creando 🌐 $NET_CONTAINER" || echo -e "✅ La red ya existe, creación cancelada. "
-    echo -e "🌐 $NET_CONTAINER \n"
+    printf "📝 " && docker network create $NET_CONTAINERS 2>/dev/null && echo -e "⚠️ Red de contenedores no existe. Creando 🌐 $NET_CONTAINERS" || echo -e "✅ La red ya existe, creación cancelada. "
+    echo -e "🌐 $NET_CONTAINERS \n"
 }
 
 #red de contenedores
 network_message() {
-    echo -e "🌐 Red disponible: $NET_CONTAINER. \n"
+    echo -e "🌐 Red disponible: $NET_CONTAINERS. \n"
 }
 
 # Función para reiniciar los contenedores
@@ -223,7 +223,7 @@ delete_containers() {
         delete_container "$container"
     done
 
-    delete_network $NET_CONTAINER
+    delete_network $NET_CONTAINERS
 }
 
 # Función para verificar si el contenedor está en el listado
@@ -254,6 +254,18 @@ execute_in_container() {
 # Función para mostrar el mensaje de error
 exit_with_message() {
     echo -e "$1"
+    exit 1
+}
+
+# Función para mostrar el mensaje de error
+show_project_name() {
+    echo -e "📂︎ $PROJECT_NAME"
+    exit 1
+}
+
+# Función para mostrar el mensaje de error
+show_network_name() {
+    echo -e "🌐 $NET_CONTAINERS"
     exit 1
 }
 
@@ -356,6 +368,12 @@ exec)
         )"
     fi
     ;;
+project)
+    show_project_name
+    ;;
+network)
+    show_network_name
+    ;;
 help)
     echo "⛑  comandos disponibles: "
     echo -e "• \e[1;33mstart\e[0m      - Inicia los contenedores definidos"
@@ -365,8 +383,10 @@ help)
     echo -e "• \e[1;33mstatus\e[0m     - Visualiza el estado de los contenedores"
     echo -e "• \e[1;33mlist\e[0m       - Lista los contenedores definidos con su ID"
     echo -e "• \e[1;33mexec \$foo\e[0m  - Ejecuta comandos dentro del contenedor"
+    echo -e "• \e[1;33mproject\e[0m    - Visualiza el nombre del proyecto asignado"
+    echo -e "• \e[1;33mnetwork\e[0m    - Visualiza el nombre de la RED asignada"
     ;;
 *)
-    exit_with_message "⚙  Uso: $0 {start|stop|restart|logs|status|list|exec}"
+    exit_with_message "⚙  Uso: $0 {start|stop|restart|logs|status|list|exec|project|network|help}"
     ;;
 esac
