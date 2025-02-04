@@ -61,20 +61,10 @@ Este script permite gestionar contenedores de Docker de manera mas sencilla para
 
 ```bash
 #define el nombre de tu proyecto
-PROJECT_NAME="some-app"
-
-export PROJECT_NAME
-```
-
-### Define el nombre del proyecto y el nombre de la red en en `docker-config.sh`
-
-```bash
-#define el nombre de tu proyecto
 PROJECT_NAME="project-name"
 
 #define el nombre de la red de contenedores
 NETWORKING_NAME="network-name"
-
 
 # no modificar
 export PROJECT_NAME
