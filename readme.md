@@ -21,6 +21,10 @@ Este script permite gestionar contenedores de Docker de manera mas sencilla para
 > 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── pgadmin.sh
 
+### Variables globales diponibles
+
+> 
+
 ### Uso
 
 > Iniciar los contenedores
