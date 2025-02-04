@@ -26,7 +26,7 @@ nginx_init() {
 }
 
 nginx_info() {
-    echo "🖥️ Nginx está disponible en http://localhost:$NGINX_PORT"
+    echo "🖥️  Nginx está disponible en http://localhost:$NGINX_PORT"
 }
 
 # Exportar la variable del contenedor

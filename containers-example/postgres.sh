@@ -23,7 +23,7 @@ postgres_init() {
 }
 
 postgres_info() {
-    echo "🖥️ postgres está disponible en el puerto $POSTGRES_PORT"
+    echo "🖥️  postgres está disponible en el puerto $POSTGRES_PORT"
 }
 
 export CONTAINER="$POSTGRES_CONTAINER"

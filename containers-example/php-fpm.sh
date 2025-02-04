@@ -21,7 +21,7 @@ laravelApp_init() {
 }
 
 laravel_info() {
-    echo "🖥️ php-fpm está disponible"
+    echo "🖥️  php-fpm está disponible"
 }
 
 # Exportar la variable del contenedor

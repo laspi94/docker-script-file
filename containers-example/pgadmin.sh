@@ -26,7 +26,7 @@ pgAdmin_init() {
 }
 
 pgAdmin_info() {
-    echo "🖥️ pgAdmin está disponible en http://localhost:$PGADMIN_PORT"
+    echo "🖥️  pgAdmin está disponible en http://localhost:$PGADMIN_PORT"
 }
 
 # Exportar la variable CONTAINERS
