@@ -20,7 +20,10 @@ nginx_init() {
         -p $NGINX_PORT:80 \
         -v "$NGINX_VOLUME":"$NGINX_VOLUME_PATH" \
         -v "$NGINX_CONFIG":"/etc/nginx/conf.d/default.conf" \
-        $NGINX_IMAGE 
+        $NGINX_IMAGE \
+        sh -c "chgrp -R www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+        && chmod -R ug+rwx /var/www/html/storage /var/www/html/bootstrap/cache \
+        && nginx -g 'daemon off;'"
 
     echo -e "\n"
 }

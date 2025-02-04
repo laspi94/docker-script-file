@@ -15,7 +15,10 @@ laravelApp_init() {
         --network $NET_CONTAINERS \
         -p "$PHP_PORT":9000 \
         -v "$PHP_VOLUME":"$PHP_VOLUME_PATH" \
-        $PHP_IMAGE 
+        $PHP_IMAGE \
+        sh -c "apk add --no-cache postgresql-dev \
+        && docker-php-ext-install pdo_pgsql \
+        && php-fpm"
 
     echo -e "\n"
 }
