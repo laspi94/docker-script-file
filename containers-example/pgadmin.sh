@@ -13,7 +13,7 @@ pgAdmin_init() {
 
     echo -e "🚀 Iniciando contenedor de $PGADMIN_CONTAINER..."
     
-    printf "📝 " && MSYS_NO_PATHCONV=1 docker run -d \
+    printf "📝 " && MSYS_NO_PATHCONV=1 docker run --restart=always -d \
         --name $PGADMIN_CONTAINER \
         --network $NET_CONTAINERS \
         --env PGADMIN_DEFAULT_EMAIL="$PGADMIN_DEFAULT_EMAIL" \

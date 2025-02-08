@@ -14,7 +14,7 @@ postgres_init() {
 
     echo -e "🚀 Iniciando contenedor de $MYSQL_CONTAINER..."
 
-    printf "📝 " && MSYS_NO_PATHCONV=1 docker run -dp $MYSQL_PORT:3306 \
+    printf "📝 " && MSYS_NO_PATHCONV=1 docker run --restart=always -dp $MYSQL_PORT:3306 \
         --name $MYSQL_CONTAINER \
         --network $NET_CONTAINERS \
         --env MYSQL_ROOT_PASSWORD="$MYSQL_ROOT_PASSWORD" \

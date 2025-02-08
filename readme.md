@@ -85,7 +85,7 @@ postgres_init(){
 
     echo -e "🚀 Iniciando contenedor de POSTGRES_CONTAINER..."
 
-    printf  "📝 " && docker run -dp $POSTGRES_PORT:5432 \
+    printf  "📝 " && docker run --restart=always -dp $POSTGRES_PORT:5432 \
     --name $POSTGRES_CONTAINER \
     --env POSTGRES_PASSWORD="$POSTGRES_PASSWORD" \
     --volume "$POSTGRES_VOLUME":"$POSTGRES_VOLUME_PATH" \

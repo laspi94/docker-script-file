@@ -14,7 +14,7 @@ nginx_init() {
 
     echo "🚀 Iniciando contenedor de $NGINX_CONTAINER..."
 
-    printf "📝 " && MSYS_NO_PATHCONV=1 docker run -d \
+    printf "📝 " && MSYS_NO_PATHCONV=1 docker run --restart=always -d \
         --name $NGINX_CONTAINER \
         --network $NET_CONTAINERS \
         -p $NGINX_PORT:80 \

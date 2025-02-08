@@ -10,7 +10,7 @@ PHP_PORT="9000"
 laravelApp_init() {
     echo "🚀 Iniciando contenedor de $PHP_CONTAINER..."
 
-    printf "📝 " && MSYS_NO_PATHCONV=1 docker run -d \
+    printf "📝 " && MSYS_NO_PATHCONV=1 docker run --restart=always -d \
         --name $PHP_CONTAINER \
         --network $NET_CONTAINERS \
         -p "$PHP_PORT":9000 \

@@ -11,7 +11,7 @@ pgAdmin_init() {
 
     echo -e "🚀 Iniciando contenedor de $PHPMYADMIN_CONTAINER..."
     
-    printf "📝 " && MSYS_NO_PATHCONV=1 docker run -d \
+    printf "📝 " && MSYS_NO_PATHCONV=1 docker run --restart=always -d \
         --name $PHPMYADMIN_CONTAINER \
         --network $NET_CONTAINERS \
         -p $PHPMYADMIN_PORT:80 \

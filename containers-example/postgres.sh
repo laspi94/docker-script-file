@@ -12,7 +12,7 @@ postgres_init() {
 
     echo -e "🚀 Iniciando contenedor de $POSTGRES_CONTAINER..."
 
-    printf "📝 " && MSYS_NO_PATHCONV=1 docker run -dp $POSTGRES_PORT:5432 \
+    printf "📝 " && MSYS_NO_PATHCONV=1 docker run --restart=always -dp $POSTGRES_PORT:5432 \
         --name $POSTGRES_CONTAINER \
         --network $NET_CONTAINERS \
         --env POSTGRES_PASSWORD="$POSTGRES_PASSWORD" \
